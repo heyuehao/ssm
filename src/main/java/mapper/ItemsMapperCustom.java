@@ -9,4 +9,5 @@ public interface ItemsMapperCustom {
 
 	// 查询商品列表
 	List<ItemsCustom> findItemsList(ItemsQueryVo itemsQueryVo) throws Exception;
+	
 }
