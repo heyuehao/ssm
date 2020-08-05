@@ -5,9 +5,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="mapper.ItemsMapperCustom">
 
-	<!-- 根据id查询商品 -->
+	<!-- 查询商品 -->
 	<select id="findItemsList" parameterType="pojo.ItemsQueryVo" resultType="pojo.ItemsCustom">
-		select * from items where id = #{itemsCustom.id};
+		select * from items 
+		<where>
+			<if test="itemsCustom!=null">
+			<if test="itemsCustom.name!=null and itemsCustom.name!=''">
+				and  name like '%${itemsCustom.name}%'
+			</if>
+			<if test="itemsCustom.id!=null">
+				and  id = #{itemsCustom.id}
+			</if>
+		</if>
+		</where>
 	</select>
 
 </mapper>
