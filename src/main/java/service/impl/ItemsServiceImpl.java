@@ -34,10 +34,20 @@ public class ItemsServiceImpl implements ItemsService {
         return itemsCustom;
 	}
 
-	public void updateItem(Integer id, ItemsCustom itemsCustom) {
+	public void updateItem(Integer id, ItemsCustom itemsCustom) throws Exception{
 		
 		itemsMapper.updateItem(itemsCustom);
 		
+	}
+
+	public void deleteItem(Integer id) throws Exception{
+		
+		itemsMapper.deleteItem(id);
+	}
+
+	public void insertItem(ItemsCustom itemsCustom) throws Exception {
+		
+		itemsMapper.insertItem(itemsCustom);
 	}
 
 }

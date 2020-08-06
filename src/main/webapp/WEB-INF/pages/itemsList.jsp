@@ -25,7 +25,7 @@
 				<td>商品价格</td>
 				<td>生产日期</td>
 				<td>商品描述</td>
-				<td>操作</td>
+				<td colspan="2" align="center">操作</td>
 			</tr>
 			<c:forEach items="${itemsList }" var="item">
 				<tr>
@@ -34,8 +34,12 @@
 					<td><fmt:formatDate value="${item.createtime}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
 					<td>${item.detail }</td>
 					<td><a href="${pageContext.request.contextPath }/items/editItems.action?id=${item.id }">修改</a></td>
+					<td><a href="${pageContext.request.contextPath }/items/deleteItemSubmit.action?id=${item.id }">删除</a></td>
 				</tr>
 			</c:forEach>
+			<tr align="right">
+				<td colspan="6"><a href="${pageContext.request.contextPath }/items/addItem.action">添加</a></td>
+			</tr>
 		</table>
 	</form>
 </body>

@@ -10,5 +10,13 @@
 		update items set name=#{name}, price=#{price}, detail=#{detail}, pic=#{pic}, createtime=#{createtime} 
 		 where id=#{id}
 	</update>
+	
+	<delete id="deleteItem" parameterType="Integer">
+		delete from items where id=#{id}
+	</delete>
+	
+	<insert id="insertItem" parameterType="pojo.Items">
+		insert into items(name, price, detail, pic, createtime) values (#{name}, #{price}, #{detail}, #{pic}, #{createtime})
+	</insert>
 
 </mapper>

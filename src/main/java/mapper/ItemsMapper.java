@@ -1,6 +1,7 @@
 package mapper;
 
 import pojo.Items;
+import pojo.ItemsCustom;
 
 public interface ItemsMapper {
 
@@ -9,6 +10,12 @@ public interface ItemsMapper {
 
 	// 更新商品信息
 	public void updateItem(Items item);
+
+	// 删除商品信息
+	public void deleteItem(Integer id);
+
+	// 添加商品信息
+	public void insertItem(ItemsCustom itemsCustom);
 	
 	
 }

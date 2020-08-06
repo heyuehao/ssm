@@ -10,7 +10,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -55,6 +54,30 @@ public class ItemsController {
 		
 		// 更新数据库中的数据
 		itemsService.updateItem(id, itemsCustom);
+		
+		return "redirect:queryItems.action";
+	}
+	
+	@RequestMapping("/deleteItemSubmit")
+	public String deleteItem(Integer id) throws Exception {
+		// 调用service删除商品
+		itemsService.deleteItem(id);
+		
+		return "redirect:queryItems.action";
+	}
+	
+	@RequestMapping("/addItem")
+	public String addItem(Model model) throws Exception{
+		model.addAttribute("createtime", new Date());
+		
+		return "addItem";
+	}
+	
+	@RequestMapping("/addItemSubmit")
+	public String addItemSubmit(ItemsCustom itemsCustom) throws Exception{
+		
+		// 调用service添加商品
+		itemsService.insertItem(itemsCustom);
 		
 		return "redirect:queryItems.action";
 	}
