@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import mapper.ItemsMapper;
 import pojo.ItemsCustom;
 import service.ItemsService;
 
@@ -80,6 +81,20 @@ public class ItemsController {
 		itemsService.insertItem(itemsCustom);
 		
 		return "redirect:queryItems.action";
+	}
+	
+	@RequestMapping(value = "/findBy")
+	public ModelAndView findByCondition(Model model, String condition, String textValue) throws Exception {
+		List<ItemsCustom> itemsList = null;
+		ModelAndView modelAndView = new ModelAndView();
+		if("name".equals(condition)) {
+			// 调用业务层通过商品名称查询
+			itemsList = itemsService.findByName(textValue);
+		}
+		modelAndView.addObject("itemsList", itemsList);
+		modelAndView.setViewName("itemsList");
+		
+		return modelAndView;
 	}
 	
 	//自定义属性编辑器

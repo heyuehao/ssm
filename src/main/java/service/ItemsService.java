@@ -22,4 +22,7 @@ public interface ItemsService {
 	
 	// 添加商品信息
 	public void insertItem(ItemsCustom itemsCustom) throws Exception;
+
+	// 根据商品名称模糊查询
+	public List<ItemsCustom> findByName(String textValue) throws Exception;
 }

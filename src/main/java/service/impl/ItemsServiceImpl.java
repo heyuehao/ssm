@@ -50,4 +50,9 @@ public class ItemsServiceImpl implements ItemsService {
 		itemsMapper.insertItem(itemsCustom);
 	}
 
+	public List<ItemsCustom> findByName(String textValue) throws Exception {
+		
+		return itemsMapper.findByName(textValue);
+	}
+
 }

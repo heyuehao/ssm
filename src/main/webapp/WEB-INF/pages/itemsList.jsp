@@ -10,11 +10,15 @@
 </head>
 <body>
 	<form action="${pageContext.request.contextPath }/items/queryItem.action" method="post">
-		查询条件：
+		查询条件:
+		<select name="condition">
+			<option value="name">商品名称</option>
+		</select>
 		<table width="100%" border=1>
 			<tr>
 				<td>
-					<input type="submit" value="查询" />
+					<input type="text" name="textValue">
+					<input type="submit" value="查询" formaction="${pageContext.request.contextPath }/items/findBy.action"/>
 				</td>
 			</tr>
 		</table>
@@ -38,7 +42,8 @@
 				</tr>
 			</c:forEach>
 			<tr align="right">
-				<td colspan="6"><a href="${pageContext.request.contextPath }/items/addItem.action">添加</a></td>
+				<td colspan="4"></td>
+				<td colspan="2" align="center"><a href="${pageContext.request.contextPath }/items/addItem.action">添加</a></td>
 			</tr>
 		</table>
 	</form>

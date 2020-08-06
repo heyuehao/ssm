@@ -18,5 +18,9 @@
 	<insert id="insertItem" parameterType="pojo.Items">
 		insert into items(name, price, detail, pic, createtime) values (#{name}, #{price}, #{detail}, #{pic}, #{createtime})
 	</insert>
+	
+	<select id="findByName" parameterType="string" resultType="pojo.ItemsCustom">
+		select * from items where name like '%${textValue}%'
+	</select>
 
 </mapper>
